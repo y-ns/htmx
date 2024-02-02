@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>HTMX Sample</title>
+        <!-- CDN -->
+        <!-- <script src="https://unpkg.com/htmx.org@1.9.10"></script> -->
+        <script src="htmx.min.js"></script>
+    </head>
+    <body>
+        <h1>This is a sample with HTMX.</h1>
+
+        <div id="dynamic-content">
+            <button hx-post="/api/post.php" hx-swap="none" hx-trigger="click" hx-target="#dynamic-content" hx-headers='{"Content-Type": "application/json"}'>Send POST Request</button>
+        </div>
+    
+        <script>
+            document.body.addEventListener('htmx:response', function(event) {
+                // コンソールにレスポンスを表示
+                console.log('Response:', event.detail.xhr.response);
+            });
+        </script>
+    </body>
+</html>
